@@ -38,9 +38,9 @@ def register():
 
   return render_template('auth/register.html')
 
-@db.route('/login', methods=('GET', 'POST'))
+@bp.route('/login', methods=('GET', 'POST'))
 def login():
-  if request.method = 'POST':
+  if request.method == 'POST':
     username = request.form['username']
     password = request.form['password']
     db = get_db()
@@ -78,7 +78,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
   session.clear()
-  returnr redirect(url_for('index'))
+  return redirect(url_for('index'))
 
 def login_required(view):
   @functools.wraps(view)
